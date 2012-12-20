@@ -1,0 +1,18 @@
+<?php
+session_start();
+ 
+// TODO: Fix this so that it doesn't require "Belt" to be in the name.
+$belt_brands = query("SELECT brands.Code, brands.Name as BrandName, brands.DescrShort, brands.LogoURL FROM types, items, brands WHERE types.Name LIKE '%Belt%' AND types.TypeId = items.TypeId AND items.BrandCode = brands.Code AND items.flagStatus != 'U' GROUP BY brands.Code ORDER BY brands.Name");
+ 
+$Title = 'Belts';
+$with_footer = false;
+include('heading.php');
+?>
+ 
+<?php
+ 
+display_top_of_page($breadcrumbs=null, $dynamic_breadcrumbs=null, $page_class='belts-page'); // includes leftnav, the start of the central column td that has a background color of #ffffff, and possibly a breadcrumb trail, END.
+ 
+ 
+display_starting_cell('belts-start');
+?>
